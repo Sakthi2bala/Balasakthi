@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Balasakthi Shanmugaraja, Telecommunications Engineering student at Politecnico di Milano.">
+  <title>Balasakthi Shanmugaraja | Portfolio</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --text: #111318;
+      --muted: #626873;
+      --line: #e1e4e8;
+      --accent: #1f4ed8;
+      --accent-soft: #eef3ff;
+      --shadow: 0 12px 34px rgba(15, 23, 42, 0.07);
+    }
+
+    body.dark {
+      --bg: #101114;
+      --surface: #17191e;
+      --soft: #0c0d10;
+      --text: #f5f6f8;
+      --muted: #aeb3bd;
+      --line: #30343b;
+      --accent: #8cabff;
+      --accent-soft: #1c253b;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      background: var(--bg);
+      color: var(--text);
+      transition: background-color .35s ease, color .35s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(1120px, calc(100% - 42px)); margin: 0 auto; }
+
+    /* HEADER */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: color-mix(in srgb, var(--bg) 94%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    .brand {
+      margin-right: auto;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .nav-menu a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-menu a:hover { color: var(--text); }
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .top-link i { font-size: 19px; }
+    .top-link.linkedin i { color: #0a66c2; }
+    .theme-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .theme-button:hover { background: var(--soft); }
+
+    /* HERO */
+    .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-inner {
+      max-width: 930px;
+      padding: 92px 0 86px;
+    }
+    .hero h1 {
+      margin: 0 0 28px;
+      font-size: clamp(54px, 8vw, 100px);
+      line-height: .98;
+      letter-spacing: -.06em;
+      font-weight: 800;
+    }
+    .hero h1 .hello {
+      display: block;
+      font-size: .54em;
+      letter-spacing: -.03em;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .summary {
+      max-width: 900px;
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      min-height: 46px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .button.secondary {
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    /* SECTIONS */
+    .section { padding: 94px 0; }
+    .section.soft {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-heading {
+      max-width: 820px;
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+    .section-heading h2 {
+      margin: 0 0 12px;
+      font-size: clamp(38px, 5vw, 55px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .skill {
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .skill:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .skill i { font-size: 32px; }
+    .logo-badge {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 7px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .skill-name { font-size: 14px; font-weight: 700; }
+
+    /* EDUCATION */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .education-card {
+      min-height: 300px;
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .edu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    .edu-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 20px;
+    }
+    .edu-year { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .education-card h3 { margin: 0 0 8px; font-size: 23px; line-height: 1.3; }
+    .education-card h4 { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+    .edu-details { padding-top: 18px; border-top: 1px solid var(--line); }
+    .edu-details p { margin: 8px 0; color: var(--muted); }
+    .edu-details strong { color: var(--text); }
+
+    /* PROJECTS */
+    .projects { display: grid; gap: 18px; }
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 32px;
+      align-items: center;
+      padding: 29px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .project-type {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .project h3 { margin: 0 0 10px; font-size: 23px; }
+    .project p { margin: 0 0 15px; color: var(--muted); }
+    .project-result {
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+      font-size: 13px;
+      border-radius: 0 7px 7px 0;
+    }
+    .project-tools { margin-top: 14px; font-size: 13px; font-weight: 700; }
+    .project-files {
+      min-height: 120px;
+      padding-left: 28px;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 9px;
+    }
+    .project-files-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .file-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 9px;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--bg);
+    }
+    .file-link:hover { border-color: var(--text); }
+    .file-link .file-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-link small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    /* CONTACT */
+    .contact-card {
+      max-width: 820px;
+      margin: auto;
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .contact-form { display: grid; gap: 14px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 15px;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--text); }
+    .contact-form textarea { resize: vertical; }
+    .send-button {
+      width: fit-content;
+      margin: 4px auto 0;
+      padding: 12px 25px;
+      background: var(--text);
+      color: var(--bg);
+      border: 0;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* BILL GATES QUOTE */
+    .quote {
+      padding: 78px 0 65px;
+      text-align: center;
+    }
+    .quote blockquote {
+      max-width: 860px;
+      margin: 0 auto 10px;
+      font-size: clamp(21px, 3vw, 30px);
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .quote cite {
+      color: var(--muted);
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-social { display: flex; gap: 16px; font-size: 18px; }
+
+    /* FLOATING CONTROLS */
+    .floating-theme,
+    .back-top {
+      position: fixed;
+      bottom: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--text);
+      color: var(--bg);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 900;
+      transition: transform .3s ease;
+    }
+    .floating-theme { left: 22px; }
+    .back-top { right: 22px; }
+    .floating-theme:hover, .back-top:hover { transform: translateY(-3px); }
+    .theme-spin { animation: spin .45s ease; }
+    @keyframes spin {
+      from { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(160deg) scale(.75); }
+      to { transform: rotate(360deg) scale(1); }
+    }
+
+    @media (max-width: 930px) {
+      .nav-menu { display: none; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .education-grid { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .project-files {
+        min-height: auto;
+        padding-left: 0;
+        padding-top: 20px;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 26px, 1120px); }
+      .top-link span { display: none; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 74px 0; }
+      .section { padding: 72px 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .education-card, .project, .contact-card { padding: 22px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">Balasakthi</a>
+
+      <nav class="nav-menu">
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="top-links">
+        <a class="top-link linkedin" href="https://www.linkedin.com/in/balasakthi-shanmugaraja" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+
+        <a class="top-link" href="resume.pdf" target="_blank" rel="noopener">
+          <i class="fa-regular fa-file-pdf"></i>
+          <span>CV</span>
+        </a>
+
+        <button class="theme-button" id="topThemeButton" aria-label="Switch dark/light mode">
+          <i class="fa-solid fa-moon" id="topThemeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <h1>
+          <span class="hello">Hi, I’m</span>
+          Balasakthi
+        </h1>
+
+        <p class="summary">
+          Telecommunications Engineering student at Politecnico di Milano with academic and project experience in mobile radio networks, RF systems, wireless communications, network planning and IoT. Hands-on experience with Python-based network modelling and optimization. Seeking an internship where I can apply my telecommunications background to mobile network testing, technical support and wireless technology development.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#projects">View Projects</a>
+          <a class="button secondary" href="resume.pdf" target="_blank" rel="noopener">
+            <i class="fa-regular fa-file-pdf"></i> View CV
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Technical Skills</h2>
+          <p>Programming languages, software and engineering tools used across my academic and project work.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill"><i class="fa-brands fa-python"></i><span class="skill-name">Python</span></div>
+          <div class="skill"><div class="logo-badge">C++</div><span class="skill-name">C++</span></div>
+          <div class="skill"><div class="logo-badge">MAT</div><span class="skill-name">MATLAB</span></div>
+          <div class="skill"><i class="fa-brands fa-linux"></i><span class="skill-name">Linux</span></div>
+          <div class="skill"><i class="fa-solid fa-database"></i><span class="skill-name">SQL</span></div>
+          <div class="skill"><i class="fa-brands fa-git-alt"></i><span class="skill-name">Git</span></div>
+          <div class="skill"><div class="logo-badge">NP</div><span class="skill-name">NumPy</span></div>
+          <div class="skill"><div class="logo-badge">MPL</div><span class="skill-name">Matplotlib</span></div>
+          <div class="skill"><i class="fa-solid fa-magnifying-glass-chart"></i><span class="skill-name">Wireshark</span></div>
+          <div class="skill"><div class="logo-badge">AMPL</div><span class="skill-name">AMPL</span></div>
+          <div class="skill"><div class="logo-badge">AWR</div><span class="skill-name">Microwave Office / VSS</span></div>
+          <div class="skill"><div class="logo-badge">NR</div><span class="skill-name">Node-RED</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section soft" id="education">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Education</h2>
+          <p>My academic background in electronics, communication and telecommunications engineering.</p>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card">
+            <div class="edu-head">
+              <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <span class="edu-year">2020 – 2024</span>
+            </div>
+            <h3>B.E. Electronics and Communication Engineering</h3>
+            <h4>NPR College of Engineering and Technology</h4>
+            <div class="edu-details">
+              <p><strong>CGPA:</strong> 7.52/10</p>
+              <p><strong>Thesis:</strong> Hybrid Vehicle with Motion Sensors</p>
+            </div>
+          </article>
+
+          <article class="education-card">
+            <div class="edu-head">
+              <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
+              <span class="edu-year">2025 – Present</span>
+            </div>
+            <h3>MSc Telecommunications Engineering</h3>
+            <h4>Politecnico di Milano</h4>
+            <div class="edu-details">
+              <p><strong>Track:</strong> Communication Networks and Internet</p>
+              <p><strong>Average:</strong> 24.65/30</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Projects</h2>
+          <p>
+            Academic projects covering mobile network planning, RF receiver design, IoT systems,
+            telecom fault analysis and applied large language models. Each project includes the original files.
+          </p>
+        </div>
+
+        <div class="projects">
+
+          <article class="project">
+            <div>
+              <span class="project-type">Mobile Networks</span>
+              <h3>Mobile Radio Network Planning & Optimization</h3>
+              <p>
+                Built a Mixed Integer Linear Programming model for macro/micro base-station placement,
+                enforcing coverage, received-power and minimum 7 Mbps throughput requirements while minimizing deployment cost.
+              </p>
+              <div class="project-result">
+                The mixed macro/micro deployment achieved the lowest project cost (4.58), below both macro-only (7.99) and micro-only (4.77) scenarios.
+              </div>
+              <div class="project-tools">Python · AMPL · HiGHS · NumPy · Matplotlib · MILP</div>
+            </div>
+            <div class="project-files">
+              <span class="project-files-label">Project file</span>
+              <a class="file-link" href="project-files/mobile-radio-network-project.pdf" target="_blank">
+                <span class="file-name"><i class="fa-regular fa-file-pdf"></i> Project Report</span>
+                <small>PDF</small>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="project">
+            <div>
+              <span class="project-type">RF Systems</span>
+              <h3>RF Front-End Design & Performance Analysis</h3>
+              <p>
+                Evaluated a conversion receiver at circuit and system level, including LNA, mixer and LO behavior.
+                Used S-parameters and Smith Chart matching and analysed gain, noise figure, IP3, P1dB, EVM, phase noise and image interference.
+              </p>
+              <div class="project-result">
+                The report extracts practical LNA and mixer parameters and then uses them to evaluate receiver quality and admissible RF input-power range.
+              </div>
+              <div class="project-tools">AWR Microwave Office · VSS · S-Parameters · Smith Chart · 16-QAM · EVM</div>
+            </div>
+            <div class="project-files">
+              <span class="project-files-label">Project file</span>
+              <a class="file-link" href="project-files/rf-front-end-project.pdf" target="_blank">
+                <span class="file-name"><i class="fa-regular fa-file-pdf"></i> RF Project Report</span>
+                <small>PDF</small>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="project">
+            <div>
+              <span class="project-type">Internet of Things</span>
+              <h3>IoT Systems & Smart Applications</h3>
+              <p>
+                Completed three IoT assignments spanning energy-aware sensing, MQTT/Node-RED data flows and hybrid indoor/outdoor asset monitoring.
+                Together they cover embedded sensing, wireless communication, event-driven messaging, dashboards and IoT system architecture.
+              </p>
+              <div class="project-result">
+                <strong>Smart Parking:</strong> ESP32 + HC-SR04 occupancy sensing, ESP-NOW communication and deep-sleep energy analysis.<br>
+                <strong>Node-RED:</strong> Mosquitto/MQTT flows, ID/timestamp generation, CSV processing, frame matching, filtering and dashboard visualization.<br>
+                <strong>Forklift Monitoring:</strong> GPS/UWB/IMU/wheel/BLE sensing with ESP32-S3, LoRa/Wi-Fi/Bluetooth and MQTT-based monitoring.
+              </div>
+              <div class="project-tools">ESP32 · ESP-NOW · HC-SR04 · Node-RED · MQTT · Mosquitto · LoRa · GPS · UWB · IMU</div>
+            </div>
+
+            <div class="project-files">
+              <span class="project-files-label">IoT project files</span>
+
+              <a class="file-link" href="project-files/iot-smart-parking.pdf" target="_blank">
+                <span class="file-name"><i class="fa-regular fa-file-pdf"></i> Smart Parking</span>
+                <small>PDF</small>
+              </a>
+
+              <a class="file-link" href="project-files/iot-node-red-mqtt.pdf" target="_blank">
+                <span class="file-name"><i class="fa-regular fa-file-pdf"></i> Node-RED & MQTT</span>
+                <small>PDF</small>
+              </a>
+
+              <a class="file-link" href="project-files/iot-forklift-monitoring.pdf" target="_blank">
+                <span class="file-name"><i class="fa-regular fa-file-pdf"></i> Forklift Monitoring</span>
+                <small>PDF</small>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="project">
+            <div>
+              <span class="project-type">Network Data Analysis / Machine Learning</span>
+              <h3>Microwave Network Hardware Failure Classification & Synthetic Data</h3>
+              <p>
+                Analysed 164 network-alarm features recorded in 15-minute windows to classify IDU, ODU, cable and power failures.
+                Compared Random Forest and XGBoost using binary/categorical representations and synthetic data generated with SMOTEN and CVAE.
+              </p>
+              <div class="project-result">
+                Evaluated 24 experiment configurations. Best overall Macro F1: <strong>0.9690</strong>; best synthetic-data Macro F1: <strong>0.9684</strong>.
+              </div>
+              <div class="project-tools">Python · Pandas · Scikit-learn · XGBoost · Random Forest · SMOTEN · CVAE</div>
+            </div>
+            <div class="project-files">
+              <span class="project-files-label">Project file</span>
+              <a class="file-link" href="project-files/microwave-network-failure-project.pptx" download>
+                <span class="file-name"><i class="fa-regular fa-file-powerpoint"></i> Project Presentation</span>
+                <small>PPTX</small>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="project">
+            <div>
+              <span class="project-type">AI / NLP</span>
+              <h3>LLM-Based Automated Question Answering System</h3>
+              <p>
+                Built a local question-answering pipeline around Qwen2.5-7B-Instruct in Google Colab.
+                The notebook retrieves quiz questions through an API, prompts the model, extracts an A–D answer and submits it automatically.
+              </p>
+              <div class="project-result">
+                Used 4-bit quantization to run the 7B model on a Colab GPU and evaluated the approach on News and Maths categories, identifying RAG and exact-computation tools as natural future improvements.
+              </div>
+              <div class="project-tools">Python · PyTorch · Hugging Face Transformers · Qwen2.5-7B · 4-bit Quantization · API Integration</div>
+            </div>
+            <div class="project-files">
+              <span class="project-files-label">Project file</span>
+              <a class="file-link" href="project-files/llm-question-answering.ipynb" download>
+                <span class="file-name"><i class="fa-solid fa-code"></i> Jupyter Notebook</span>
+                <small>IPYNB</small>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section soft" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Contact Me</h2>
+          <p>Have a question, opportunity or want to work together? Drop me a message below.</p>
+        </div>
+
+        <div class="contact-card">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <input id="contactName" type="text" placeholder="Your Name" required>
+              <input id="contactEmail" type="email" placeholder="Your Email" required>
+            </div>
+
+            <input id="contactSubject" type="text" placeholder="Subject" required>
+            <textarea id="contactMessage" rows="6" placeholder="Your Message" required></textarea>
+
+            <button class="send-button" type="submit">Send Message</button>
+          </form>
+        </div>
+
+        <div class="quote">
+          <blockquote>“The Internet is becoming the town square for the global village of tomorrow.”</blockquote>
+          <cite>— Bill Gates</cite>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Balasakthi Shanmugaraja</span>
+
+      <div class="footer-social">
+        <a href="resume.pdf" target="_blank" aria-label="CV">
+          <i class="fa-regular fa-file-pdf"></i>
+        </a>
+        <a href="mailto:sakthi2bala2@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/balasakthi-shanmugaraja" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <button class="floating-theme" id="floatingTheme" aria-label="Dark/light mode">
+    <i class="fa-solid fa-moon" id="floatingThemeIcon"></i>
+  </button>
+
+  <a class="back-top" href="#home" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+
+  <script>
+    const topThemeButton = document.getElementById("topThemeButton");
+    const topThemeIcon = document.getElementById("topThemeIcon");
+    const floatingTheme = document.getElementById("floatingTheme");
+    const floatingThemeIcon = document.getElementById("floatingThemeIcon");
+
+    function updateThemeIcons() {
+      const dark = document.body.classList.contains("dark");
+      topThemeIcon.className = dark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      floatingThemeIcon.className = dark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    }
+
+    function spin(icon) {
+      icon.classList.remove("theme-spin");
+      void icon.offsetWidth;
+      icon.classList.add("theme-spin");
+    }
+
+    function toggleTheme(icon) {
+      document.body.classList.toggle("dark");
+      localStorage.setItem(
+        "balasakthi-theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+      );
+      updateThemeIcons();
+      spin(icon);
+    }
+
+    if (localStorage.getItem("balasakthi-theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    updateThemeIcons();
+
+    topThemeButton.addEventListener("click", () => toggleTheme(topThemeIcon));
+    floatingTheme.addEventListener("click", () => toggleTheme(floatingThemeIcon));
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("contactName").value;
+      const email = document.getElementById("contactEmail").value;
+      const subject = document.getElementById("contactSubject").value;
+      const message = document.getElementById("contactMessage").value;
+
+      const body = "Name: " + name + "\nEmail: " + email + "\n\n" + message;
+
+      window.location.href =
+        "mailto:sakthi2bala2@gmail.com" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
